@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +15,8 @@ jobs:
       with:
         java-version: '11'
 
-    - name: Compile and Test with Maven
-      run: |
-        mvn -B package --file pom.xml
-        mvn test
+    - name: Compile Java code
+      run: javac Num.java NumTest.java
+
+    - name: Run Tests
+      run: java NumTest
